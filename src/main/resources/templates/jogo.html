@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8">
+        <title>Adivinhar</title>
+        <link rel="stylesheet" href="estilos.css" />
+    </head>
+    <body>
+        <div class="container">
+            <p class="titulo">Em que número estou pensando?</p>
+
+            <div>
+                <form action="/enviar" method="post" th:object="${formulario}">
+                    <input class="entrada" type="text" th:field="*{palpite}" />
+                    <input class="enviar" type="submit" value="Enviar"/>
+                </form>
+            </div>
+
+            <p th:text="${mensagem}" class="mensagem">Você acertou!</p>
+
+            <input th:if="${acertou}" class="reiniciar" type="submit" value="Clique aqui para reiniciar o jogo"/>
+
+            <p>Número de tentativas: <span th:text="${tentativas}">0</span></p>
+        </div>
+    </body>
+</html>
